@@ -476,7 +476,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
   // This for-loop actually creates and appends all of the pizzas when the page loads
-  // CH - moving the variable outside the loop
+  // CH - moving the pizzaDiv variable outside the loop
   var pizzasDiv = document.getElementById("randomPizzas");
   for (var i = 2; i < 100; i++) {
     pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -509,10 +509,10 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-// CH - change the frequency of when scrolling updates the pizzas from 1250 to 750
   var items = document.querySelectorAll('.mover');
+  // CH - move the phase variable outside loop & change the frequency of when scrolling updates the pizzas from 1250 to 750
+  var phase = Math.sin((document.body.scrollTop / 750) + (i % 5));
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 750) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 

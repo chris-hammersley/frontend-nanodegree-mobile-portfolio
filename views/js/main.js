@@ -372,7 +372,7 @@ var pizzaElementGenerator = function(i) {
   pizzaImage = document.createElement("img");
   pizzaDescriptionContainer = document.createElement("div");
 
-  pizzaContainer.classList.add("randomPizzaContainer");
+  pizzaContainer.classList.add("randomPizzaContainer"); // CH note - class list to use to refactor all changePizzaSizes
   pizzaContainer.style.width = "33.33%";
   pizzaContainer.style.height = "325px";
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
@@ -447,12 +447,20 @@ var resizePizzas = function(size) {
     return dx;
   }
 
+  // CH - added a variable assigned to the entire randomPizzaContainer class that calls the document info so I can pass it into the changePizzaSizes function; allows me to remove the document.querySelectorAll() from the loop and just pass a value.
+  var randomPizzaContainerAll = document.getElementsByClassName("randomPizzaContainer");
+
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    // CH - moving the dx variable out of loop
+    var dx = determineDx(randomPizzaContainerAll[0], size);
+    // CH - moving the newwidth calculation variable outside of the loop
+    var newwidth = (randomPizzaContainerAll[0].offsetWidth + dx) + 'px';
+    // CH - adding a variable to return the length of the randomPizzaContainer to use in the loop
+    var pizzaContainerLength = randomPizzaContainerAll.length;
+    // CH - refactoring the loop using the new pizzaContainerLength variable
+    for (var i = 0; i < pizzaContainerLength; i++) {
+      randomPizzaContainerAll[i].style.width = newwidth;
     }
   }
 

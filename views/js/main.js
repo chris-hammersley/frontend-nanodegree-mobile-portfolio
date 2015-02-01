@@ -476,9 +476,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
   // This for-loop actually creates and appends all of the pizzas when the page loads
-  // CH - REVERT moving the pizzaDiv variable outside the loop - only showed 1 column of static pizza
+  // CH - moving the pizzaDiv variable outside the loop
+  var pizzasDiv = document.getElementById("randomPizzas");
   for (var i = 2; i < 100; i++) {
-    var pizzasDiv = document.getElementById("randomPizzas");
     pizzasDiv.appendChild(pizzaElementGenerator(i));
   }
 
@@ -510,9 +510,10 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   var items = document.querySelectorAll('.mover');
-  // CH - move the phase variable outside loop & change the frequency of when scrolling updates the pizzas from 1250 to 750
-  var phase = Math.sin((document.body.scrollTop / 750) + (i % 5));
   for (var i = 0; i < items.length; i++) {
+    // CH (REVERTED) tried moving the phase variable outside loop but it destroyed my dancing pizzas
+    // CH - changed the frequency of when scrolling updates the pizzas from 1250 to 750
+    var phase = Math.sin((document.body.scrollTop / 750) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 

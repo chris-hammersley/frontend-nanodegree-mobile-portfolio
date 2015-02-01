@@ -533,7 +533,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-// CH - reduced the number of pizza rows being displayed on screen from 200 to 55
+// CH - reduced the number of pizzas being displayed on screen from 200 to 55
   for (var i = 0; i < 55; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';

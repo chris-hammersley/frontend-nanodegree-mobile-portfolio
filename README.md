@@ -6,18 +6,18 @@ index.html
 - added a media type to print css
 - added async to perfmatter.js
 - modified portfolio copy
-- optimized all native images
+- optimized hosted images
 - added attribute tags to external images
 
 /views/ja/main.js
-Line 450: new variable
-Line 455: moved dx variable
-Line 457: moved newwidth variable
-Line 459: new variable
-Line 461: refactor for loop with new variable
-Line 479: moved pizzaDiv variable
-Line 513: moved phase variable & changed freq of scrolling updates
-Line 536: reduced number of pizzas
+- Line 450: new variable
+- Line 455: moved dx variable
+- Line 457: moved newwidth variable
+- Line 459: new variable
+- Line 461: refactor for loop with new variable
+- Line 479: moved pizzaDiv variable
+- Line 513: new variable for scrollTop value
+- Line 536: reduced number of pizzas
 
 I used the following resources for additional help, information & inspiration!
 
@@ -42,11 +42,15 @@ http://creativejs.com/resources/requestanimationframe/
 Add Google Fonts to CSS instead of HTML (for testing the speed gain/loss)
 http://stackoverflow.com/questions/14676613/how-to-import-google-web-font-in-css-file
 
+Translate
+http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/
+
 PIAZZA
 Tools & sites to help understand & identify FPS scrolling issues
 https://piazza.com/class/i0sf6tsmg0r7do?cid=729
 https://piazza.com/class/i0sf6tsmg0r7do?cid=825
 https://piazza.com/class/i0sf6tsmg0r7do?cid=761
+https://piazza.com/class/i0sf6tsmg0r7do?cid=1198
 
 Optimizing Google Fonts & CSS
 https://piazza.com/class/i0sf6tsmg0r7do?cid=743

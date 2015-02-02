@@ -510,10 +510,11 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   var items = document.querySelectorAll('.mover');
+  var scrollTop = document.body.scrollTop / 750;
   for (var i = 0; i < items.length; i++) {
     // CH (REVERTED) tried moving the phase variable outside loop but it destroyed my dancing pizzas
     // CH - changed the frequency of when scrolling updates the pizzas from 1250 to 750
-    var phase = Math.sin((document.body.scrollTop / 750) + (i % 5));
+    var phase = Math.sin((scrollTop) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 

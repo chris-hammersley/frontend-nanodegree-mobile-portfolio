@@ -510,12 +510,12 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   var items = document.querySelectorAll('.mover');
-  var scrollTop = document.body.scrollTop / 750;
+  var scrollTop = document.body.scrollTop / 1250;
   for (var i = 0; i < items.length; i++) {
-    // CH (REVERTED) tried moving the phase variable outside loop but it destroyed my dancing pizzas
-    // CH - changed the frequency of when scrolling updates the pizzas from 1250 to 750
     var phase = Math.sin((scrollTop) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+//    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+// CH - trying out translate to check performance gain
+    items[i].style.transform = 'translateX(' + 100 * phase) + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -542,7 +542,9 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+// CH - rewrote left position to update based on translate value
+    elem.style.left = ((i % cols) *s) + 'px';
+//    elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }

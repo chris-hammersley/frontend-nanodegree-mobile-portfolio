@@ -1,0 +1,19 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio",
+  "version": "1.0.0",
+  "description": "Project 4 - Chris Hammersley ============================ View Optimized Site Here --> http://chris-hammersley.github.io/frontend-nanodegree-mobile-portfolio/ ============================ I refactored the following files & lines of code. Details in the comments. ========== index.html ========== - moved Google Font load to CSS - added a media type to print css - added async to perfmatter.js - modified portfolio copy - optimized hosted images - added attribute tags to external images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chris-hammersley/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chris-hammersley/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/chris-hammersley/frontend-nanodegree-mobile-portfolio"
+}

@@ -29,6 +29,23 @@ index.html
 RESOURCES USED
 ==============
 I used the following resources for additional help, information & inspiration!
+***********
+NEW 2/16/15 >> INLINED MY CRITICAL CSS
+***********
+I used a combination of the following to identify above-the-fold rendering CSS and then inline it while sideloading the remaining CSS files
+
+1. Determining What's Critical Above the Fold
+http://css-tricks.com/authoring-critical-fold-css/
+
+2. Javascript to use for a Bookmarklet
+https://gist.github.com/PaulKinlan/6284142
+
+3. The Bookmarkleter Tool (open Console to see result)
+http://chriszarate.github.io/bookmarkleter/
+
+4. loadCSS Async
+https://github.com/filamentgroup/loadCSS
+
 ===
 WEB
 ===

@@ -29,7 +29,20 @@
     li p { font-size: 0.9em; font-style: italic; }
     #header{padding: 0 0.5em; color: #C90B0B;}
     </style>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <script>
+    var font = new FontFace("Open Sans", "url(http://fonts.googleapis.com/css?family=Open+Sans)", {
+    style: 'normal', unicodeRange: 'U+000-5FF', weight: '400','700'
+    });
+
+    font.load(); // don't wait for render tree, initiate immediate fetch!
+
+    font.ready().then(function() {
+    // apply the font (which may rerender text and cause a page reflow)
+    // once the font has finished downloading
+    document.fonts.add(font);
+    document.body.style.fontFamily = "Open Sans";
+    });
+    </script>
     <script>
     // include loadCSS here...
     function loadCSS(href){

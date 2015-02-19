@@ -46,6 +46,9 @@ http://chriszarate.github.io/bookmarkleter/
 4. loadCSS Async
 https://github.com/filamentgroup/loadCSS
 
+5. Optimizing Loading of the Google Font
+https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en#optimizing-loading-and-rendering
+
 ===
 WEB
 ===

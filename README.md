@@ -16,14 +16,18 @@ index.html
 =================
 /views/ja/main.js
 =================
+- Line 375: comment
 - Line 450: new variable
-- Line 455: moved dx variable
-- Line 457: moved newwidth variable
-- Line 459: new variable
-- Line 461: refactor for loop with new variable
-- Line 479: moved pizzaDiv variable
-- Line 513: new variable for scrollTop value
-- Line 536: reduced number of pizzas
+- Lines 455-463: moved variables, added variable, refactored for-loop
+- Lines 478-483: moved pizzasDiv variable outside for-loop
+- Lines 508-527: separated scroll event from update function; added requestAnimationFrame
+- Lines 530-533: modified updatePositions function with ticking
+- Line 536: added a blank line for spacing
+- Lines 538-539: new variable for calc removed from for-loop
+- Lines 541-544: replaced variable contents with new variable
+- Lines 558-559: reverted to original code
+- Lines 565-566: reduced a value
+- Lines 570-574: rollback of various values to original code
 
 ==============
 RESOURCES USED
@@ -49,6 +53,14 @@ https://github.com/filamentgroup/loadCSS
 5. Optimizing Loading of the Google Font
 https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en#optimizing-loading-and-rendering
 
+*****
+NEW 2/20/15 >> ADDED requestAnimationFrame
+*****
+1. Started with Piazza: https://piazza.com/class/i0sf6tsmg0r7do?cid=965
+2. Reviewed CreativeJS > http://creativejs.com/resources/requestanimationframe/
+3. Worked out solution through HTML5ROCKS example > http://www.html5rocks.com/en/tutorials/speed/rendering/#toc-vsync
+4. Experimiented with > http://jsfiddle.net/wMkJg/
+
 ===
 WEB
 ===
@@ -64,10 +76,6 @@ http://www.html5rocks.com/en/tutorials/speed/scrolling/
 
 Getting Down & Dirty with Chrome Timeline & Performance Profiling
 https://developer.chrome.com/devtools/docs/timeline
-
-requestAnimationFrame
-http://www.html5rocks.com/en/tutorials/speed/rendering/#toc-vsync
-http://creativejs.com/resources/requestanimationframe/
 
 Add Google Fonts to CSS instead of HTML (for testing the speed gain/loss)
 http://stackoverflow.com/questions/14676613/how-to-import-google-web-font-in-css-file

@@ -476,7 +476,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
   // This for-loop actually creates and appends all of the pizzas when the page loads
-  // CH - moving the pizzaDiv variable outside the loop
+  // CH - moving the pizzasDiv variable outside the loop
   var pizzasDiv = document.getElementById("randomPizzas");
   for (var i = 2; i < 100; i++) {
     pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -505,14 +505,42 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
+// CH - separating scroll event from the update function
+// CH - add variable for last known scroll vertical position
+// CH - add ticking so that we can use onScroll function to initiate the call to requestAnimationFrame
+var lastScrollY = 0,
+    ticking = false;
+
+// CH - add function to store current Y value for onScroll event and add a request tick to use for later evaluation
+function onScroll() {
+  lastScrollY = window.scrollY;
+  requestTick();
+}
+
+// CH - add function to request the tick to see if we need to update the scroll position using requestAnimationFrame
+function requestTick() {
+  if(!ticking) {
+    requestAnimationFrame(updatePositions);
+  }
+  ticking = true;
+}
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
+  // CH - reset the ticking to false after update
+  ticking = false;
+  // CH - added in the current scroll Y position
+  var currentScrollY = lastScrollY;
   frame++;
   window.performance.mark("mark_start_frame");
+
   var items = document.querySelectorAll('.mover');
+  // CH - created a variable for scrollTop value and removed it from the for loop
   var scrollTop = document.body.scrollTop / 1250;
   for (var i = 0; i < items.length; i++) {
+    // CH - inside phase variable I removed the scrollTop calulation from Math.sin() and replaced it with scrollTop variable
     var phase = Math.sin((scrollTop) + (i % 5));
+    // CH - tried using translate() here but reverted to original code
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -527,6 +555,7 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
+// CH - tried to modify the 'scroll' listener, but reverted to original code
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
@@ -538,8 +567,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
+    // CH - tried modifying image height/width, but reverted to original values
     elem.style.height = "100px";
     elem.style.width = "73.333px";
+    // CH - tried modifying the left column but reverted to original values
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
